@@ -20,7 +20,7 @@ found inside the example folder of this repository.
 
     docker run                        \
       --detach                        \
-      --publish 53:53/udp             \
+      --publish 53:53/tcp             \
       --publish 53:53/udp             \
       --volume example:/etc/bind      \
       quay.io/cthullu/bind9
