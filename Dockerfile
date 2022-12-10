@@ -10,12 +10,21 @@ RUN apk -U --no-cache upgrade                                                   
     && apk add --no-cache bind bind-tools                                       \
     && rm -rf /var/cache/apk/*
 
+# Create a system group and user named bind
+RUN addgroup -S bind                                                            \
+    && adduser -S -D -G bin bind
+
 # Create folder structure and adapt permissions
 RUN mkdir -p /etc/bind                                                          \
     && mkdir -p /var/cache/bind                                                 \
     && mkdir -p /var/lib/bind                                                   \
     && mkdir -p /var/log/bind                                                   \
     && mkdir -p /run/named                                                      \
+    && chown root:bind /etc/bind/                                               \
+    && chown bind:bind /var/cache/bind                                          \
+    && chown bind:bind /var/lib/bind                                            \
+    && chown bind:bind /var/log/bind                                            \
+    && chown bind:bind /run/named                                               \
     && chmod 755 /etc/bind                                                      \
     && chmod 755 /var/cache/bind                                                \
     && chmod 755 /var/lib/bind                                                  \
@@ -29,4 +38,4 @@ VOLUME ["/etc/bind", "/var/cache/bind", "/var/lib/bind", "/var/log"]
 EXPOSE 53/udp 53/tcp 953/tcp
 
 # Specify a entrypoint. CMD parsed will be apended
-ENTRYPOINT [ "", "-g", "-c", "/etc/bind/named.conf", "-u", "bind" ]
+ENTRYPOINT [ "/usr/sbin/named", "-g", "-c", "/etc/bind/named.conf", "-u", "bind" ]
