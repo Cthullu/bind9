@@ -22,7 +22,7 @@ found inside the example folder of this repository.
       --detach                        \
       --publish 53:53/tcp             \
       --publish 53:53/udp             \
-      --volume example:/etc/bind      \
+      --volume ./example:/etc/bind    \
       quay.io/cthullu/bind9
 
 [1]: https://hub.docker.com/r/internetsystemsconsortium/bind9
