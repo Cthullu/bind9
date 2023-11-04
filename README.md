@@ -11,19 +11,23 @@ hosted on [Docker][1] and [GitHub][2].
 
 The latest image can be pulled from quay.io:
 
-    docker pull quay.io/cthullu/bind9
+~~~shell
+docker pull quay.io/cthullu/bind9
+~~~
 
 ## Start the container
 
 The image needs at least a named.conf file to be mounted. An example of such a file can be
 found inside the example folder of this repository.
 
-    docker run                        \
-      --detach                        \
-      --publish 53:53/tcp             \
-      --publish 53:53/udp             \
-      --volume ./example:/etc/bind    \
-      quay.io/cthullu/bind9
+~~~shell
+docker run                        \
+  --detach                        \
+  --publish 53:53/tcp             \
+  --publish 53:53/udp             \
+  --volume ./example:/etc/bind    \
+  quay.io/cthullu/bind9
+~~~
 
 [1]: https://hub.docker.com/r/internetsystemsconsortium/bind9
 [2]: https://github.com/isc-projects/bind9-docker
