@@ -12,7 +12,7 @@ hosted on [Docker][1] and [GitHub][2].
 The latest image can be pulled from quay.io:
 
 ~~~shell
-docker pull quay.io/cthullu/bind9
+docker pull quay.io/cthullu/bind9:latest
 ~~~
 
 ## Start the container
@@ -26,7 +26,7 @@ docker run                        \
   --publish 53:53/tcp             \
   --publish 53:53/udp             \
   --volume ./example:/etc/bind    \
-  quay.io/cthullu/bind9
+  quay.io/cthullu/bind9:latest
 ~~~
 
 [1]: https://hub.docker.com/r/internetsystemsconsortium/bind9
