@@ -7,6 +7,13 @@ provides the bind service.
 The implementation is inspired by the official bind9 image from the
 internetsystemconsortium hosted on [Docker][1] and [GitHub][2].
 
+## Update 2023-12-27
+
+I decided to no longer maintain this image.
+
+This implies, that there will be no further pre-build releases available, making
+9.18.19-b2 my last Alpine based release which will be provided.
+
 ## Get the image
 
 The latest image can be pulled from quay.io:
